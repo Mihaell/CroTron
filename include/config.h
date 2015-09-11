@@ -4,4 +4,4 @@
 #include <cstdio>
 #include <cstdlib>
 
-#endif  // CTROTRON_CONFIG_H_
+#endif  // CROTRON_CONFIG_H_

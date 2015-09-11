@@ -1,19 +1,12 @@
-#include <SFML/Graphics.hpp>
+#include "app.h"
 
-#include "config.h"
+#include <memory>
 
 int main(int argc, const char* argv[]) {
-  sf::RenderWindow window(sf::VideoMode(960, 510), "CroTron");
 
-  while (window.isOpen()) {
-    sf::Event event;
-    while (window.pollEvent(event))
-      if (event.type == sf::Event::Closed)
-        window.close();
+  std::unique_ptr<App> app(new App);
 
-    window.clear();
-    window.display();
-  }
+  app->Run();
 
   return 0;
 }
