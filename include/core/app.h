@@ -1,5 +1,5 @@
-#ifndef CROTRON_APP_H_
-#define CROTRON_APP_H_
+#ifndef CROTRON_CORE_APP_H_
+#define CROTRON_CORE_APP_H_
 
 #include <SFML/Graphics.hpp>
 
@@ -16,4 +16,4 @@ class App {
 
 };
 
-#endif  // CROTRON_APP_H_
+#endif  // CROTRON_CORE_APP_H_
