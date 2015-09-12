@@ -4,8 +4,7 @@
 class StateInterface {
  public:
 
-  virtual StateInterface() = 0;
-  virtual ~StateInterface() = 0;
+  virtual ~StateInterface() {}
 
   virtual void Draw() = 0;
   virtual void Update() = 0;
