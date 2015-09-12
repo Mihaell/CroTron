@@ -40,11 +40,12 @@
 			<Add option="-lsfml-system" />
 			<Add directory="lib/SFML-2.3.1/lib" />
 		</Linker>
+		<Unit filename="include/app.h" />
+		<Unit filename="include/assets/texture.h" />
 		<Unit filename="include/config.h" />
-		<Unit filename="include/core/app.h" />
-		<Unit filename="include/interface/state_interface.h" />
-		<Unit filename="src/core/app.cc" />
-		<Unit filename="src/main.cc" />
+		<Unit filename="src/app.cc" />
+		<Unit filename="src/assets/texture.cc" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
