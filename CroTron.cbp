@@ -43,13 +43,16 @@
 		<Unit filename="include/assets/texture.h" />
 		<Unit filename="include/config.h" />
 		<Unit filename="include/core/app.h" />
+		<Unit filename="include/core/state_manager.h" />
 		<Unit filename="include/interface/state_interface.h" />
 		<Unit filename="src/assets/texture.cc" />
 		<Unit filename="src/core/app.cc" />
+		<Unit filename="src/core/state_manager.cc" />
 		<Unit filename="src/main.cc" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
