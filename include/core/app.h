@@ -1,7 +1,10 @@
 #ifndef CROTRON_CORE_APP_H_
 #define CROTRON_CORE_APP_H_
 
+#include <vector>
+
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 class App {
  public:
@@ -12,7 +15,7 @@ class App {
  private:
 
   sf::RenderWindow window;
-
+  std::vector<sf::VideoMode> modes_;
 
 };
 

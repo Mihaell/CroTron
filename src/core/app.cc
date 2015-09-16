@@ -1,14 +1,36 @@
 #include "core/app.h"
 
-#include <SFML/Graphics.hpp>
+#include <algorithm>
+#include <iostream>
 
 #include "assets/texture.h"
 
 App::App() {
-  window.create(sf::VideoMode(960, 510), "CroTron");
+
+  int bestBPP = 0;
+
+  modes_ = sf::VideoMode::getFullscreenModes();
+
+  for (auto it: modes_) {
+    if (it.bitsPerPixel > bestBPP) bestBPP = it.bitsPerPixel;
+  }
+
+  modes_.erase(
+      std::remove_if(
+          modes_.begin(),
+          modes_.end(),
+          [bestBPP](sf::VideoMode mode) { return mode.bitsPerPixel != bestBPP; }),
+      modes_.end());
+
+  for (auto it: modes_) {
+    std::cout << it.width << " " << it.height << std::endl;
+  }
+
+  window.create(modes_[0], "CroTron");
 }
 
 void App::Run() {
+
   Texture::Load("CROTRON_LOGO", "data/textures/crotron.png");
 
   sf::Sprite sprite;
