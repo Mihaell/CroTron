@@ -9,12 +9,16 @@
 class App {
  public:
 
+  static sf::RenderWindow window_;
+
   App();
+  ~App();
+
   void Run();
+  void ResetViewport();
 
  private:
 
-  sf::RenderWindow window;
   std::vector<sf::VideoMode> modes_;
 
 };
