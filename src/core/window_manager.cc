@@ -8,7 +8,8 @@ std::vector<sf::VideoMode> WindowManager::modes_;
 void WindowManager::InitWindow() {
   GetVideoModes(modes_);
 
-  render_window_.create(modes_[0], "CroTrone");
+  // TODO: vratiti natrag na modes_, ovo je PRIVREMENO!!!
+  render_window_.create(sf::VideoMode(1024, 720), "CroTron");
 
   ResetViewport();
 }
@@ -42,31 +43,26 @@ void WindowManager::GetVideoModes(std::vector<sf::VideoMode> &modes) {
 }
 
 void WindowManager::ResetViewport() {
-  const float WIDTH_RATIO = 16.0;
-  const float HEIGHT_RATIO = 9.0;
-
   sf::Vector2u sz = render_window_.getSize();
 
-  float min_ratio = std::min(sz.x / WIDTH_RATIO, sz.y / HEIGHT_RATIO);
-  float max_w_pixels = min_ratio * WIDTH_RATIO;
-  float max_h_pixels = min_ratio * HEIGHT_RATIO;
+  const float win_ratio = sz.x / static_cast<float>(sz.y);
+  const float view_ratio = VIEW_WIDTH / VIEW_HEIGHT;
 
-  float max_w = max_w_pixels / sz.x;
-  float max_h = max_h_pixels / sz.y;
+  sf::View view(sf::FloatRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT));
 
-  sf::View view;
-  view.setViewport(sf::FloatRect(0.5 - max_w / 2.0, 0.5 - max_h / 2.0,
-                                 0.5 + max_w / 2.0, 0.5 + max_h / 2.0));
-
-  std::cout << max_w << " " << max_h << std::endl;
-  std::cout << 0.5 - max_w / 2.0 << " " << 0.5 - max_h / 2.0 << " "
-            << 0.5 + max_w / 2.0 << " " << 0.5 + max_h / 2.0 << std::endl;
+  if (win_ratio < view_ratio) {
+    const float h = win_ratio / view_ratio;
+    view.setViewport(sf::FloatRect(0, 0.5 - h/2, 1, h));
+  } else {
+    const float w = win_ratio / view_ratio;
+    view.setViewport(sf::FloatRect(0.5 - w/2, 0, w, 1));
+  }
 
   render_window_.setView(view);
 }
 
-void WindowManager::Clear() {
-  render_window_.clear();
+void WindowManager::Clear(const sf::Color& color) {
+  render_window_.clear(color);
 }
 
 void WindowManager::Draw(const sf::Drawable& drawable,

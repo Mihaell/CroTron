@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 
+#include "core/window_manager.h"
 #include "interface/widget.h"
 
 Widget::Widget(const sf::Vector2f& pos, const sf::Vector2f& size)
@@ -25,9 +26,18 @@ void Widget::MouseMoved(const sf::Vector2f& pos) {
 }
 
 void Widget::Draw() const {
-  // HMM... a trebi mi window da crtam nesto
-  // bilo bi zgodno da imam neki static window kojem
-  // mogu lagano pristupit
+  const sf::Vector2f abspos = GetAbsPosition();
+
+  sf::VertexArray quad(sf::Quads, 4);
+  quad[0].position = abspos;
+  quad[1].position = abspos + sf::Vector2f(size_.x, 0);
+  quad[2].position = abspos + sf::Vector2f(size_.x, size_.y);
+  quad[3].position = abspos + sf::Vector2f(0, size_.y);
+
+  quad[0].color = quad[1].color =
+  quad[2].color = quad[3].color = sf::Color(255, 255, 255, 70);
+
+  WindowManager::Draw(quad);
 }
 
 void Widget::Update() {

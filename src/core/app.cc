@@ -5,6 +5,7 @@
 
 #include "assets/texture.h"
 #include "core/window_manager.h"
+#include "interface/widget.h"
 
 App::App() {
   WindowManager::InitWindow();
@@ -21,6 +22,8 @@ void App::Run() {
   sprite.setTexture(*Texture::Get("CROTRON_LOGO"));
   sprite.setPosition(100, 100);
 
+  Widget* widget = new Widget(sf::Vector2f(50, 50), sf::Vector2f(200, 200));
+
   bool running = true;
 
   while (running) {
@@ -31,8 +34,14 @@ void App::Run() {
         running = false;
       }
     }
-    WindowManager::Clear();
+    // sljedeca linija je privremena da se testira window viewport
+    WindowManager::Clear(sf::Color(40, 40, 40));
+    sf::RectangleShape shape(sf::Vector2f(1280, 720));
+    shape.setFillColor(sf::Color::Black);
+
+    WindowManager::Draw(shape);
     WindowManager::Draw(sprite);
+    widget->Draw();
     WindowManager::Display();
   }
 }

@@ -45,10 +45,13 @@
 		<Unit filename="include/core/app.h" />
 		<Unit filename="include/core/state_manager.h" />
 		<Unit filename="include/core/window_manager.h" />
+		<Unit filename="include/interface/widget.h" />
+		<Unit filename="include/states/state_interface.h" />
 		<Unit filename="src/assets/texture.cc" />
 		<Unit filename="src/core/app.cc" />
 		<Unit filename="src/core/state_manager.cc" />
 		<Unit filename="src/core/window_manager.cc" />
+		<Unit filename="src/interface/widget.cc" />
 		<Unit filename="src/main.cc" />
 		<Extensions>
 			<code_completion />
