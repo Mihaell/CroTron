@@ -11,12 +11,10 @@ App::App() {
 }
 
 App::~App() {
-
 }
 
 
 void App::Run() {
-
   Texture::Load("CROTRON_LOGO", "data/textures/crotron.png");
 
   sf::Sprite sprite;
@@ -34,7 +32,7 @@ void App::Run() {
       }
     }
     WindowManager::Clear();
-    WindowManager::DrawSFMLDrawable(sprite);
+    WindowManager::Draw(sprite);
     WindowManager::Display();
   }
 }

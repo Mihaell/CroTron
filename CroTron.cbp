@@ -45,7 +45,6 @@
 		<Unit filename="include/core/app.h" />
 		<Unit filename="include/core/state_manager.h" />
 		<Unit filename="include/core/window_manager.h" />
-		<Unit filename="include/interface/state_interface.h" />
 		<Unit filename="src/assets/texture.cc" />
 		<Unit filename="src/core/app.cc" />
 		<Unit filename="src/core/state_manager.cc" />

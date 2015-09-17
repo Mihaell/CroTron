@@ -59,7 +59,8 @@ void WindowManager::ResetViewport() {
                                  0.5 + max_w / 2.0, 0.5 + max_h / 2.0));
 
   std::cout << max_w << " " << max_h << std::endl;
-  std::cout << 0.5 - max_w / 2.0 << " " << 0.5 - max_h / 2.0 << " " << 0.5 + max_w / 2.0 << " " << 0.5 + max_h / 2.0 << std::endl;
+  std::cout << 0.5 - max_w / 2.0 << " " << 0.5 - max_h / 2.0 << " "
+            << 0.5 + max_w / 2.0 << " " << 0.5 + max_h / 2.0 << std::endl;
 
   render_window_.setView(view);
 }
@@ -68,7 +69,9 @@ void WindowManager::Clear() {
   render_window_.clear();
 }
 
-void WindowManager::DrawSFMLDrawable(const sf::Drawable& drawable) {
+void WindowManager::Draw(const sf::Drawable& drawable,
+                         const sf::RenderStates& states,
+                         sf::Shader* shader) {
   render_window_.draw(drawable);
 }
 
