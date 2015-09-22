@@ -3,9 +3,9 @@
 #include <algorithm>
 #include <iostream>
 
-#include "assets/texture.h"
+#include "core/state_manager.h"
 #include "core/window_manager.h"
-#include "interface/widget.h"
+#include "states/game_state.h"
 
 App::App() {
   WindowManager::InitWindow();
@@ -16,15 +16,10 @@ App::~App() {
 
 
 void App::Run() {
-  Texture::Load("CROTRON_LOGO", "data/textures/crotron.png");
-
-  sf::Sprite sprite;
-  sprite.setTexture(*Texture::Get("CROTRON_LOGO"));
-  sprite.setPosition(100, 100);
-
-  Widget* widget = new Widget(sf::Vector2f(50, 50), sf::Vector2f(200, 200));
-
   bool running = true;
+
+  StateManager state_manager;
+  state_manager.PushStateToStack(move(std::unique_ptr<StateInterface>(new GameState)));
 
   while (running) {
     sf::Event event;
@@ -40,8 +35,7 @@ void App::Run() {
     shape.setFillColor(sf::Color::Black);
 
     WindowManager::Draw(shape);
-    WindowManager::Draw(sprite);
-    widget->Draw();
+    StateManager::DrawStack();
     WindowManager::Display();
   }
 }

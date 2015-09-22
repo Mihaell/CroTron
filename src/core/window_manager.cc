@@ -54,7 +54,7 @@ void WindowManager::ResetViewport() {
     const float h = win_ratio / view_ratio;
     view.setViewport(sf::FloatRect(0, 0.5 - h/2, 1, h));
   } else {
-    const float w = win_ratio / view_ratio;
+    const float w = view_ratio / win_ratio;
     view.setViewport(sf::FloatRect(0.5 - w/2, 0, w, 1));
   }
 
