@@ -65,8 +65,8 @@ void WindowManager::Clear(const sf::Color& color) {
   render_window_.clear(color);
 }
 
-void WindowManager::Draw(const sf::Drawable& drawable,
-                         const sf::RenderStates& states,
+void WindowManager::Draw(const sf::Drawable &drawable,
+                         const sf::RenderStates &states,
                          sf::Shader* shader) {
   render_window_.draw(drawable);
 }

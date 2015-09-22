@@ -20,7 +20,7 @@ class WindowManager {
 
   /// Draws SFML drawable
   static void Draw(const sf::Drawable &drawable,
-                   const sf::RenderStates& states = sf::BlendAlpha,
+                   const sf::RenderStates &states = sf::BlendAlpha,
                    sf::Shader* shader = nullptr);
 
   static void Display();
