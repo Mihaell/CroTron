@@ -37,7 +37,7 @@ void StateManager::StartState(std::string state_name) {
 }
 
 void StateManager::RemoveStateFromStack(std::string state_name) {
-  for (int i = 0; i < states_stack_.size(); i++) {
+  for (int i = 0; i < (int)states_stack_.size(); i++) {
     if (states_stack_[i].get()->state_name_ == state_name) {
       states_stack_.erase(states_stack_.begin() + i);
       break;

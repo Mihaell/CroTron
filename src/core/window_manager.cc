@@ -20,7 +20,7 @@ void WindowManager::CloseWindow() {
 }
 
 void WindowManager::GetVideoModes(std::vector<sf::VideoMode> &modes) {
-  int best_BPP = 0;
+  unsigned int best_BPP = 0;
 
   modes = sf::VideoMode::getFullscreenModes();
 
@@ -43,13 +43,13 @@ void WindowManager::GetVideoModes(std::vector<sf::VideoMode> &modes) {
   return;
 }
 
-void WindowManager::ResetViewport() {
+sf::View WindowManager::GetView(const float view_width = VIEW_WIDTH, const float view_height = VIEW_HEIGHT) {
   sf::Vector2u sz = render_window_.getSize();
 
   const float win_ratio = sz.x / static_cast<float>(sz.y);
   const float view_ratio = VIEW_WIDTH / VIEW_HEIGHT;
 
-  sf::View view(sf::FloatRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT));
+  sf::View view(sf::FloatRect(0, 0, view_width, view_height));
 
   if (win_ratio < view_ratio) {
     const float h = win_ratio / view_ratio;
@@ -59,8 +59,20 @@ void WindowManager::ResetViewport() {
     view.setViewport(sf::FloatRect(0.5 - w/2, 0, w, 1));
   }
 
+  return view;
+}
+
+
+void WindowManager::ResetViewport() {
+  render_window_.setView(GetView());
+}
+
+void WindowManager::SetViewport(sf::Vector2f center, sf::Vector2f sz) {
+  sf::View view = GetView(sz.x, sz.y);
+  view.setCenter(center);
   render_window_.setView(view);
 }
+
 
 void WindowManager::Clear(const sf::Color& color) {
   render_window_.clear(color);

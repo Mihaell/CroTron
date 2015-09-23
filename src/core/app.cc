@@ -34,11 +34,10 @@ void App::Run() {
     sf::RectangleShape shape(sf::Vector2f(1280, 720));
     shape.setFillColor(sf::Color::Black);
 
-
+    WindowManager::ResetViewport();
     WindowManager::Draw(shape);
 
     if (TimeManager::GetDelta().asMilliseconds() > 1.0/60.0) {
-      std::cout << TimeManager::GetDelta().asMilliseconds() << std::endl;
       StateManager::UpdateStack();
       TimeManager::Restart();
     }
