@@ -10,6 +10,7 @@ void WindowManager::InitWindow() {
 
   // TODO: vratiti natrag na modes_, ovo je PRIVREMENO!!!
   render_window_.create(sf::VideoMode(1024, 720), "CroTron");
+  render_window_.setVerticalSyncEnabled(true);
 
   ResetViewport();
 }

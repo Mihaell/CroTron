@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "core/state_manager.h"
+#include "core/time_manager.h"
 #include "core/window_manager.h"
 #include "states/game_state.h"
 
@@ -14,11 +15,11 @@ App::App() {
 App::~App() {
 }
 
-
 void App::Run() {
   bool running = true;
 
   StateManager::PushStateToStack(move(std::unique_ptr<StateInterface>(new GameState)));
+  TimeManager::Restart();
 
   while (running) {
     sf::Event event;
@@ -33,8 +34,15 @@ void App::Run() {
     sf::RectangleShape shape(sf::Vector2f(1280, 720));
     shape.setFillColor(sf::Color::Black);
 
+
     WindowManager::Draw(shape);
-    StateManager::UpdateStack();
+
+    if (TimeManager::GetDelta().asMilliseconds() > 1.0/60.0) {
+      std::cout << TimeManager::GetDelta().asMilliseconds() << std::endl;
+      StateManager::UpdateStack();
+      TimeManager::Restart();
+    }
+
     StateManager::DrawStack();
     WindowManager::Display();
   }

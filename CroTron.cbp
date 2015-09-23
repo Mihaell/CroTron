@@ -69,6 +69,7 @@
 		<Unit filename="include/config.h" />
 		<Unit filename="include/core/app.h" />
 		<Unit filename="include/core/state_manager.h" />
+		<Unit filename="include/core/time_manager.h" />
 		<Unit filename="include/core/window_manager.h" />
 		<Unit filename="include/game/game.h" />
 		<Unit filename="include/interface/widget.h" />
@@ -77,6 +78,7 @@
 		<Unit filename="src/assets/texture.cc" />
 		<Unit filename="src/core/app.cc" />
 		<Unit filename="src/core/state_manager.cc" />
+		<Unit filename="src/core/time_manager.cc" />
 		<Unit filename="src/core/window_manager.cc" />
 		<Unit filename="src/game/game.cc" />
 		<Unit filename="src/interface/widget.cc" />

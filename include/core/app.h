@@ -8,17 +8,13 @@
 
 class App {
  public:
-
-
   App();
   ~App();
 
   void Run();
 
  private:
-
   std::vector<sf::VideoMode> modes_;
-
 };
 
 #endif  // CROTRON_CORE_APP_H_
