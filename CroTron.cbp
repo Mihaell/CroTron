@@ -6,14 +6,46 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
+			<Target title="Debug - Linux">
 				<Option output="bin/Debug/CroTron" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wextra" />
 					<Add option="-g" />
+					<Add directory="lib/linux/SFML-2.3.1/include" />
 				</Compiler>
+				<Linker>
+					<Add option="-lsfml-graphics" />
+					<Add option="-lsfml-window" />
+					<Add option="-lsfml-system" />
+					<Add directory="lib/linux/SFML-2.3.1/lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug - Windows">
+				<Option output="bin/Debug/CroTron" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wextra" />
+					<Add option="-g" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="lib/windows/SFML-2.3.1/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lsfml-graphics-s-d" />
+					<Add option="-lsfml-window-s-d" />
+					<Add option="-lsfml-system-s-d" />
+					<Add library="opengl32" />
+					<Add library="winmm" />
+					<Add library="gdi32" />
+					<Add library="openal32" />
+					<Add library="ws2_32" />
+					<Add library="jpeg" />
+					<Add directory="lib/windows/SFML-2.3.1/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/CroTron" prefix_auto="1" extension_auto="1" />
@@ -31,15 +63,8 @@
 		<Compiler>
 			<Add option="-std=c++11" />
 			<Add option="-Wall" />
-			<Add directory="lib/SFML-2.3.1/include" />
 			<Add directory="include" />
 		</Compiler>
-		<Linker>
-			<Add option="-lsfml-graphics" />
-			<Add option="-lsfml-window" />
-			<Add option="-lsfml-system" />
-			<Add directory="lib/SFML-2.3.1/lib" />
-		</Linker>
 		<Unit filename="include/assets/texture.h" />
 		<Unit filename="include/config.h" />
 		<Unit filename="include/core/app.h" />
