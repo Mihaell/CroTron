@@ -18,10 +18,11 @@ GameState::~GameState() {
 }
 
 void GameState::Draw() {
-  WindowManager::Draw(sprite);
-  widget->Draw();
+//  WindowManager::Draw(sprite);
+//  widget->Draw();
+  game_.Draw();
 }
 
 void GameState::Update() {
-
+  game_.Update();
 }

@@ -18,8 +18,7 @@ App::~App() {
 void App::Run() {
   bool running = true;
 
-  StateManager state_manager;
-  state_manager.PushStateToStack(move(std::unique_ptr<StateInterface>(new GameState)));
+  StateManager::PushStateToStack(move(std::unique_ptr<StateInterface>(new GameState)));
 
   while (running) {
     sf::Event event;
@@ -35,6 +34,7 @@ void App::Run() {
     shape.setFillColor(sf::Color::Black);
 
     WindowManager::Draw(shape);
+    StateManager::UpdateStack();
     StateManager::DrawStack();
     WindowManager::Display();
   }

@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "game/game.h"
 #include "interface/widget.h"
 #include "states/state_interface.h"
 
@@ -18,6 +19,7 @@ class GameState : public StateInterface {
 
   sf::Sprite sprite;
   Widget* widget;
+  Game game_;
 
 };
 
