@@ -73,6 +73,13 @@ void WindowManager::SetViewport(sf::Vector2f center, sf::Vector2f sz) {
   render_window_.setView(view);
 }
 
+void WindowManager::SetView(const sf::View& view) {
+  render_window_.setView(view);
+}
+
+sf::View WindowManager::GetDefaultView() {
+  return render_window_.getDefaultView();
+}
 
 void WindowManager::Clear(const sf::Color& color) {
   render_window_.clear(color);

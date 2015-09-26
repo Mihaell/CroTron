@@ -5,6 +5,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "core/camera.h"
+
 class Game {
  public:
 
@@ -29,6 +31,7 @@ class Game {
   int player_heading_;
   bool alive_;
 
+  Camera* camera_;
 };
 
 #endif  // CROTRON_GAME_GAME_H_

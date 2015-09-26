@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#include "core/camera.h"
 #include "core/window_manager.h"
 
 Game::Game() {
@@ -30,6 +31,12 @@ Game::Game() {
   play_area_img_.setPixel(50, 50, sf::Color::Cyan);
 
   alive_ = true;
+
+  // TESTIRANJE CAMERE
+  camera_ = new Camera();
+  sf::View view = sf::View(sf::FloatRect(-10, -10, 760, 760));
+  view.setViewport(sf::FloatRect(0.33, 0.25, 0.33, 0.5));
+  camera_->PushView(view);
 }
 
 Game::~Game() {
@@ -37,7 +44,8 @@ Game::~Game() {
 }
 
 void Game::Draw() {
-  WindowManager::SetViewport({AREA_WIDTH / 2.0, AREA_HEIGHT / 2.0}, {16.0 * 80, 9.0 * 80});
+  //WindowManager::SetViewport({AREA_WIDTH / 2.0, AREA_HEIGHT / 2.0}, {16.0 * 80, 9.0 * 80});
+  camera_->Apply();
   DrawPlayAreaWalls();
   play_area_tex_.loadFromImage(play_area_img_);
   sf::Sprite sprite;
@@ -76,8 +84,6 @@ void Game::Update() {
     alive_ = false;
   }
 
-
-  std::cout << player_pos_.x << " " << player_pos_.y << std::endl;
 }
 
 void Game::DrawPlayAreaWalls() {

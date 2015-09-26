@@ -15,6 +15,8 @@ class WindowManager {
   static void GetVideoModes(std::vector<sf::VideoMode> &modes);
   static void ResetViewport();
   static void SetViewport(sf::Vector2f center, sf::Vector2f sz);
+  static void SetView(const sf::View& view);
+  static sf::View GetDefaultView();
   static bool PollEvent(sf::Event &event);
 
   static void Clear(const sf::Color& color = sf::Color::Black);
