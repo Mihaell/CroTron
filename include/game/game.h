@@ -13,6 +13,7 @@ class Game {
   static constexpr int AREA_WIDTH = 700;
   static constexpr int AREA_HEIGHT = 700;
   static constexpr int AREA_WALL_WIDTH = 10;
+  static constexpr float LINE_THICKNESS = 3.0;
 
   Game();
   ~Game();
@@ -25,11 +26,12 @@ class Game {
   void DrawPlayAreaWalls();
 
   sf::Image play_area_img_;
-  sf::Vector2i player_pos_;
+  sf::Vector2f player_pos_;
   std::vector<sf::RectangleShape> walls_;
   sf::Texture play_area_tex_;
   int player_heading_;
   bool alive_;
+  float player_speed_;
 
   Camera* camera_;
 };
