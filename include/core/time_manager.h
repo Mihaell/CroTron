@@ -9,7 +9,6 @@ class TimeManager {
   static void Restart();
 
  private:
-   static bool saved_;
    static sf::Clock clock_;
    static sf::Time current_delta_;
 
